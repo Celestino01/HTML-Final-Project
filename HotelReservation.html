@@ -1,0 +1,91 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!--CSC101 final project by Celestino Martinez-->
+<!--I used bootstrap for this project to display my knowledge on not only that I can use classes but also build upon them
+    I designed the whole project myself but some things I couldn't do becuase I can only submit 2 files. -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> Hotel Reservation Form</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="custom.css" rel="stylesheet" type="text/css">
+
+    <script>
+        function finalCost(){
+            var roomType = document.getElementById("room_type").value;
+            var roomNum = document.getElementById("number_of_rooms").value;
+            var personNum = document.getElementById("number_of_people").value;
+            var childNum = document.getElementById("number_of_children").value;
+            var resFacilities = document.getElementById("res_facilities").value;
+            var numberOfNights = document.getElementById("number_of_nights").value;
+
+            //I seperated the total and result because I kept getting a NaN error when calculating total cost-->
+            //Probably happend because nights stayed is last and has no value until all factors are in-->
+            //
+
+            var total = (parseInt(roomType)*10) + ((roomNum)*2) + ((personNum)*3) + ((childNum)*2) + ((resFacilities)*5);
+            var result = total * numberOfNights;
+
+            document.getElementById("result").innerHTML = total;
+            document.getElementById("resultTotal").innerHTML = result;
+        }
+    </script>
+</head>
+<body background = "http://static.asiawebdirect.com/m/phuket/portals/kosamui-com/homepage/beaches/pagePropertiesImage/samui-beaches.jpg.jpg">
+     <div class="hotel_reserve_box" style="padding: 0 100px;">
+         <h3 style = "color: white"> Hotel Reservation Form</h3><br>
+         <form>
+             <div class="form-group">
+                 <label style = "color: white">Room/Suite Type</label>
+                 <select class="form-control" id="room_type" onchange="finalCost()">
+                     <option value="0" selected>Select Room/Suite </option>
+                     <option value="1"> Standard </option>
+                     <option value="2"> Deluxe </option>
+                     <option value="3"> Superior Deluxe </option>
+                     <option value="4"> Premier Deluxe  </option>
+                     <option value="5"> Executive Suite </option>
+                     <option value="6"> Junior Suite </option>
+                     <option value="7"> Honeymoon Suite </option>
+                 </select>
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Number of room/suite</label>
+                 <input type="number" class="form-control" id="number_of_rooms" onchange="finalCost()" />
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Number of adults</label>
+                 <input type="number" class="form-control" id="number_of_people" onchange="finalCost()">
+
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Number of children</label>
+                 <input type="number" class="form-control" id="number_of_children" onchange="finalCost()">
+
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Restaurant facilities?</label>
+                 <select class="form-control" id="res_facilities" onchange="finalCost()">
+                     <option value="0" selected> Do you want restaurant facilities? </option>
+                     <option value="2"> Yes </option>
+                     <option value="0"> No </option>
+                 </select>
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Number of nights?</label>
+                 <input type="number" class="form-control" id="number_of_nights" onchange="finalCost()">
+             </div><br>
+             <div class="form-group">
+                 <label style = "color: white">Cost Per Night ($) : </label>
+                 <span id="result" style="background-color: #40e0d0;color: #fff;padding: 6px 70px;font-weight: 600;font-size: 18px; margin-left: 10px;border-radius: 5px;">0</span>
+             </div>
+             <div class="form-group">
+                 <label style = "color: white">Total Cost ($) : </label>
+                 <span id="resultTotal" style="background-color: #40e0d0;color: #fff;padding: 6px 70px;font-weight: 600;font-size: 18px; margin-left: 10px;border-radius: 5px;">0</span>
+             </div>
+         </form>
+     </div>
+</body>
+</html>
